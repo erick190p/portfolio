@@ -1,4 +1,6 @@
-/* Reset básico */
+/* ========================= */
+/* RESET BÁSICO DO SITE */
+/* ========================= */
 * {
     margin: 0;
     padding: 0;
@@ -7,113 +9,312 @@
     scroll-behavior: smooth;
 }
 
-body {
-    color: #333;
-    line-height: 1.6;
+/* ========================= */
+/* 🎨 VARIÁVEIS (DARK MODE PADRÃO) */
+/* ========================= */
+:root {
+    --bg-dark: #121212;
+    --bg-card: #1E1E1E;
+    --primary: #0057FF;
+    --secondary: #FF2D75;
+    --accent: #FFD400;
+    --success: #00C853;
+    --text: #FFFFFF;
+    --text-muted: #B0B0B0;
 }
 
-/* Navbar */
+/* ========================= */
+/* 🌙 BODY (DARK MODE) */
+/* ========================= */
+body {
+    background: var(--bg-dark);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* ========================= */
+/* ☀️ LIGHT MODE (CORRIGIDO) */
+/* ========================= */
+body.light-mode {
+    background: #f5f7fa;
+    color: #1a1a1a;
+}
+
+/* ========================= */
+/* NAVBAR */
+/* ========================= */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 10%;
-    background: #1aced174;
+    background: #1a1a1a;
     position: fixed;
     width: 100%;
-    box-shadow: 0 2px 10px rgba(26, 255, 0, 0.516);
     z-index: 1000;
+    box-shadow: 0 2px 10px rgb(236, 3, 14);
 }
 
+/* NAVBAR LIGHT */
+body.light-mode .navbar {
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgb(230, 3, 3);
+}
+
+/* LOGO */
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
 }
 
-.logo span { color: #007bff; }
+.logo span {
+    color: var(--primary);
+}
 
+/* ========================= */
+/* MENU (CORRIGIDO CONTRASTE) */
+/* ========================= */
 .nav-links {
     display: flex;
     list-style: none;
 }
 
-.nav-links li { margin-left: 20px; }
+.nav-links li {
+    margin-left: 20px;
+}
 
 .nav-links a {
     text-decoration: none;
-    color: #333;
+    color: var(--text);
     transition: 0.3s;
 }
 
-.nav-links a:hover { color: #eb0a0a; }
+/* MENU DARK HOVER */
+.nav-links a:hover {
+    color: var(--secondary);
+}
 
-/* Hero Section */
+/* MENU LIGHT (CORRIGIDO VISIBILIDADE) */
+body.light-mode .nav-links a {
+    color: #1a1a1a;
+}
+
+body.light-mode .nav-links a:hover {
+    color: #ff00ddbe;
+}
+
+/* ========================= */
+/* HERO */
+/* ========================= */
 .hero {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: #0dcf61af;
+    background: linear-gradient(135deg, #121212, #1E1E1E);
 }
 
-.hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
-.hero h1 span { color: #ef7010a1; }
-.hero p { font-size: 1.2rem; color: #1d27e4; margin-bottom: 20px; }
+/* HERO LIGHT */
+body.light-mode .hero {
+    background: linear-gradient(135deg, #f7f9ff, #eaf0ff);
+}
 
+/* TITULO */
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+}
+
+.hero h1 span {
+    color: var(--accent);
+}
+
+/* TEXTO HERO */
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+/* TEXTO LIGHT MELHORADO */
+body.light-mode .hero p {
+    color: #333;
+}
+
+/* ========================= */
+/* BOTÃO */
+/* ========================= */
 .btn {
     padding: 10px 25px;
-    background: #007bff;
-    color: #000000;
+    background: var(--primary);
+    color: #fff;
     text-decoration: none;
     border-radius: 5px;
     transition: 0.3s;
 }
 
-.btn:hover { background: #0056b3; }
+.btn:hover {
+    background: #003fcc;
+}
 
-/* Seções */
-.section { padding: 80px 10%; text-align: center; }
-.bg-light { background: #f9f9f9; }
-.section h2 { margin-bottom: 40px; font-size: 2rem; }
+/* ========================= */
+/* SEÇÕES */
+/* ========================= */
+.section {
+    padding: 80px 10%;
+    text-align: center;
+}
 
-/* Grid de Projetos */
+.bg-light {
+    background: #181818;
+}
+
+/* LIGHT SECTION */
+body.light-mode .bg-light {
+    background: #f4d0a3;
+}
+
+/* TITULO */
+.section h2 {
+    margin-bottom: 40px;
+    font-size: 2rem;
+    color: var(--accent);
+}
+
+/* TITULO LIGHT */
+body.light-mode .section h2 {
+    color: #001aff;
+}
+
+/* ========================= */
+/* PROJETOS (ACESSÍVEL) */
+/* ========================= */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
 
+/* CARD DARK */
 .project-card {
-    background: #fff;
+    background: var(--bg-card);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.644);
     transition: transform 0.3s;
 }
 
-.project-card:hover { transform: translateY(-5px); }
-
-.project-img {
-    height: 150px;
-    background: #ddd;
-    margin-bottom: 15px;
-    border-radius: 5px;
+/* CARD LIGHT (COR MAIS AGRADÁVEL QUE BRANCO PURO) */
+body.light-mode .project-card {
+    background: #04f0a1; /* azul bem suave */
+    color: #1a1a1a;
+    box-shadow: 0 6px 15px rgba(218, 4, 4, 0);
+    border-left: 4px solid #0057ff;
 }
 
-/* Footer */
+/* hover */
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
 footer {
     padding: 50px 10%;
-    background: #222;
-    color: #fff;
+    background: #0D0D0D;
+    color: var(--text);
     text-align: center;
 }
 
-.social-links { margin: 20px 0; }
-.social-links a {
-    color: #fff;
-    margin: 0 10px;
-    text-decoration: none;
+/* FOOTER LIGHT */
+body.light-mode footer {
+    background: #a5a347;
+    color: #1a1a1a;
 }
 
-.copy { font-size: 0.8rem; color: #777; margin-top: 20px; }
+/* ========================= */
+/* LINKS SOCIAIS */
+/* ========================= */
+.social-links {
+    margin: 20px 0;
+}
+
+.social-links a {
+    color: var(--text);
+    margin: 0 10px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary);
+}
+
+/* ========================= */
+/* RESPONSIVIDADE TABLET */
+/* ========================= */
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 5%;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .section {
+        padding: 60px 5%;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+        padding: 40px 5%;
+    }
+}
+
+/* ========================= */
+/* CELULAR PEQUENO */
+/* ========================= */
+@media (max-width: 480px) {
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 0.9rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+}
